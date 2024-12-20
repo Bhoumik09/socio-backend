@@ -3,14 +3,16 @@ const router=express.Router();
 const mongoose = require('mongoose');
 require('dotenv').config();
 
-try{
-    mongoose.connect(`mongodb+srv://${process.env.MONGO_CREDENTIALS}@cluster0.lrcpv.mongodb.net/`);
+mongoose.connect(`mongodb+srv://${process.env.MONGO_CREDENTIALS}@cluster0.lrcpv.mongodb.net/`, {
+    useNewUrlParser: true,
+  })
+    .then(() => {
+      console.log("Connected to the database");
+    })
+    .catch(err => {
+      console.error("Database connection failed:", err);
+    });
+  
 
-}catch(e){
-    console.log(e);
-}
-if(mongoose.ConnectionStates.connected){
-    console.log('Connected to the database');
-}
 module.exports=router;
 
