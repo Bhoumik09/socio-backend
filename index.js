@@ -15,7 +15,7 @@ app.use(express.json({ limit: '10mb' }));
 app.use(express.urlencoded({ limit: '10mb', extended: true }));
 
 // Use the CORS middleware with the configured options
-app.use(cors(corsOptions));
+app.use(cors());
 app.use(express.json()); // Parse incoming JSON data (important for POST requests)
 
 app.use(authRouter);
